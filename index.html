@@ -165,7 +165,7 @@ body {
     right: 0;
     width: 100%;
     z-index: 9999; /* Increased z-index */
-    background: rgba(26, 5, 54, 0.95);
+    background: rgb(12 36 51);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); /* Safari support */
     border-bottom: 1px solid rgba(255, 105, 180, 0.15);
@@ -221,7 +221,7 @@ body {
 }
 
 .nav-link:hover {
-    color: #FF69B4;
+    color: pink;
 }
 
 .cta-button {
@@ -235,9 +235,10 @@ body {
 }
 
 .primary-cta {
-    background: #FF69B4;
-    color: white;
-    border: none;
+     background: transparent;
+    color: pink;
+    border: 2px solid pink;
+}
 }
 
 .primary-cta:hover {
@@ -335,13 +336,13 @@ body {
             margin-bottom: 2rem;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
-            border: 1px solid #FF69B4;
+            border: 1px solid pink;
         }
 
         .hero-badge svg {
             width: 20px;
             height: 20px;
-            fill:  #FF69B4;
+            fill:  pink;
         }
 
         .hero-title {
@@ -398,21 +399,11 @@ body {
             gap: 0.75rem;
         }
 
-        .primary-cta {
-            background:  #FF69B4;
-            color: white;
-            border: none;
-        }
-
-        .primary-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(69, 202, 255, 0.3);
-        }
-
+       
         .secondary-cta {
             background: transparent;
-            color:   #FF69B4;
-            border: 1px solid  #FF69B4;
+            color:   pink;
+            border: 1px solid  pink;
         }
 
         .secondary-cta:hover {
@@ -423,7 +414,7 @@ body {
         .hero-stats {
             display: flex;
             gap: 3rem;
-            color: #FF69B4;
+            color: pink;
         }
 
         .stat {
@@ -433,7 +424,7 @@ body {
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
-            color:  #FF69B4;
+            color:  pink;
             margin-bottom: 0.5rem;
             display: flex;
             align-items: flex-start;
@@ -442,7 +433,7 @@ body {
 
         .stat-label {
             font-size: 1rem;
-            color:  #FF69B4;
+            color:  pink;
         }
 
         .hero-image-container {
@@ -1059,10 +1050,6 @@ body {
 </nav>
 
     <section class="hero">
-        <div class="floating-elements">
-            <div class="floating-circle circle-1"></div>
-            <div class="floating-circle circle-2"></div>
-        </div>
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-badge">
@@ -2668,7 +2655,7 @@ document.addEventListener('DOMContentLoaded', function() {
 .section-badge svg {
     width: 20px;
     height: 20px;
-    fill: var(--color-ocean-light);
+    fill: pink;
     transition: transform 0.3s ease;
 }
 
@@ -3303,11 +3290,6 @@ document.addEventListener('DOMContentLoaded', function() {
     border: 1px solid rgba(69, 202, 255, 0.3);
 }
 
-.section-badge svg {
-    width: 20px;
-    height: 20px;
-    fill: var(--color-neon-blue);
-}
 
 .section-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
@@ -3509,7 +3491,7 @@ document.addEventListener('DOMContentLoaded', function() {
 .info-icon svg {
     width: 24px;
     height: 24px;
-    fill: var(--color-neon-blue);
+    fill: pink;
 }
 
 .info-card h3 {
@@ -3658,8 +3640,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         <img src="https://i.postimg.cc/9Q1Q80ZX/FB-IMG-1736567649313-modified.png" alt="TailTrek Logo" class="footer-logo">
                         <div class="logo-glow"></div>
                     </div>
-                    <h2 class="brand-name">TailTrek<span class="highlight">Adventures</span></h2>
-                    <p class="brand-tagline">Creating Joyful Journeys for Every Paw</p>
                 </div>
                 <div class="social-links">
                     <a href="https://www.instagram.com/tailtrek_adventures/profilecard/" class="social-link" aria-label="Instagram">
