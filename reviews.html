@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TailTrek Adventures - Customer Reviews</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://i.postimg.cc/9Q1Q80ZX/FB-IMG-1736567649313-modified.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/9Q1Q80ZX/FB-IMG-1736567649313-modified.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://i.postimg.cc/9Q1Q80ZX/FB-IMG-1736567649313-modified.png">
+
+    <!-- Animation Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    
+    <style>
+        :root {
+            /* Primary Colors */
+            --color-ocean-blue: #1e4d6b;
+            --color-ocean-light: #39a0ed;
+            --color-forest-green: #4CAF50;
+            --color-pine: #2E7D32;
+            --color-grass: #8BC34A;
+            
+            /* Accent Colors */
+            --color-sunset-pink: #ff6b97;
+            --color-lavender: #9d4edd;
+            --color-bright-sky: #45caff;
+            
+            /* Background Colors */
+            --color-dark-ocean: #0a2133;
+            --color-forest-dark: #1B5E20;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--color-dark-ocean);
+            color: white;
+            font-family: 'Sour Gummy', system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
+            padding-top: 80px; /* Add this to account for fixed navbar */
+
+        }
+
+        /* Reviews Page Specific Styles */
+      .review-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 105, 180, 0.1);
+    border-radius: 1.25rem;
+    padding: 0; /* Removed padding here to control internal spacing better */
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 300px; /* Ensures minimum card height */
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.1);
+    border-color: var(--color-sunset-pink);
+}
+
+.review-content {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewer-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.reviewer-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-ocean-light);
+    margin: 0;
+}
+
+.review-service {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0.25rem 0 0;
+}
+
+.review-stars {
+    display: flex;
+    gap: 0.25rem;
+    color: var(--color-sunset-pink);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.review-text {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    margin: 0;
+    font-size: 1rem;
+    flex: 1; /* Allows text to expand while keeping response at bottom */
+}
+
+.review-response {
+    margin-top: auto; /* Pushes response to bottom */
+    padding: 1.5rem 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0 0 1.25rem 1.25rem;
+}
+
+.response-label {
+    font-size: 0.9rem;
+    color: var(--color-sunset-pink);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.response-text {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+        .overall-rating {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 105, 180, 0.1);
+        }
+
+        .rating-number {
+            font-size: 4.5rem;
+            font-weight: bold;
+            color: var(--color-sunset-pink);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .rating-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        .reviews-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .filter-section {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-select {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .filter-select:hover {
+            border-color: var(--color-sunset-pink);
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--color-sunset-pink);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 105, 180, 0.1);
+            border-radius: 1.25rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.1);
+            border-color: var(--color-sunset-pink);
+        }
+
+        .reviewer-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .reviewer-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-ocean-light);
+            margin: 0;
+        }
+
+        .review-service {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0.25rem 0 0;
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 0.25rem;
+            color: var(--color-sunset-pink);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .review-text {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .review-response {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .response-label {
+            font-size: 0.9rem;
+            color: var(--color-sunset-pink);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .response-text {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        .rating-summary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.overall-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 3rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 105, 180, 0.1);
+    border-radius: 1rem;
+}
+
+.rating-number {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--color-sunset-pink);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.rating-text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.review-stars {
+    color: var(--color-sunset-pink);
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+    .overall-rating {
+        padding: 1.5rem 2rem;
+    }
+    
+    .rating-number {
+        font-size: 3rem;
+    }
+    
+    .review-stars {
+        font-size: 1.25rem;
+    }
+}
+
+        @media (max-width: 1200px) {
+            .reviews-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .reviews-hero {
+                padding: 4rem 1.5rem 3rem;
+            }
+
+            .rating-summary {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .filter-section {
+                flex-direction: column;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .review-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .reviews-header h1 {
+                font-size: 2rem;
+            }
+
+            .rating-number {
+                font-size: 3.5rem;
+            }
+
+            .review-card {
+                padding: 1.25rem;
+            }
+        }
+         /* Navigation Styles */
+        .nav-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 9999;
+            background: transparent; /* Change from rgb(12 36 51) to transparent */
+    transition: background 0.3s ease, transform 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 105, 180, 0.15);
+            padding: 1rem 0;
+            transform: translateZ(0);
+        }
+        /* Add this new style for scrolled state */
+        .nav-wrapper.scrolled {
+            background: rgb(12 36 51);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: contain;
+            margin-top: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: pink;
+        }
+
+        .primary-cta {
+            background: transparent;
+            color: pink;
+            border: 2px solid pink;
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .primary-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+        }
+    }
+     /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 80vh;
+            margin-top: 80px; /* Negative margin to pull hero up under navbar */
+            display: flex;
+            align-items: center;
+            padding: 2rem 4rem;
+            overflow: hidden;
+            background: linear-gradient(to bottom, var(--color-dark-ocean), #032705d1);
+            padding-top: calc(80px + 8rem); /* Adjust padding to account for navbar height */
+
+        }
+        /* Optional: Add gradient overlay to hero to help with text legibility */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 160px; /* Adjust as needed */
+    background: linear-gradient(to bottom, rgba(10, 33, 51, 0.8), transparent);
+    pointer-events: none;
+}
+
+        .hero-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            margin-top: 5%;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(69, 202, 255, 0.1);
+            border: 1px solid pink;
+            border-radius: 100px;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-badge svg {
+            width: 20px;
+            height: 20px;
+            fill: pink;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .highlight {
+            color: var(--color-ocean-light);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .review-card {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+}
+
+.nav-wrapper {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+
+    </style>
+</head><body>
+    <nav class="nav-wrapper">
+        <div class="navbar">
+            <div class="logo-container">
+                <img src="https://i.postimg.cc/9Q1Q80ZX/FB-IMG-1736567649313-modified.png" alt="TailTrek Logo" class="logo">
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <button class="primary-cta">Book Adventure</button>
+            </div>
+        </div>
+    </nav>
+    <section class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            
+            <h1 class="hero-title">Our Customer <span class="highlight">Reviews</span></h1>
+            <p class="hero-description">Join our pack of happy pet parents who trust us with their beloved furry friends. See what they have to say about their experiences with TailTrek Adventures.</p>
+            <div class="rating-summary">
+                <div class="overall-rating">
+                    <span class="rating-number">5.0</span>
+                    <div class="review-stars">★★★★★</div>
+                    <span class="rating-text">Based on 25 reviews</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Reviews Grid -->
+    <div class="reviews-container">
+        <div class="filter-section">
+            <select class="filter-select">
+                <option>All Services</option>
+                <option>Dog Squad Adventures</option>
+                <option>Holiday Care</option>
+                <option>Training</option>
+            </select>
+            <select class="filter-select">
+                <option>Most Recent</option>
+                <option>Highest Rated</option>
+                <option>Oldest</option>
+            </select>
+        </div>
+
+        <div class="reviews-grid">
+            <!-- Lou Hatter Review -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div>
+                        <h3 class="reviewer-name">Lou Hatter</h3>
+                        <p class="review-service">Dog Squad Adventures</p>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Fabulous door to door service with our furry baby! She LOVES her mini squad on a Monday and big did squad on a Thursday! I have never seen a dog so excited to jump in the back of a van for our outings!</p>
+                <div class="review-response">
+                    <p class="response-label">Response from TailTrek Adventures:</p>
+                    <p class="response-text">Thanks Lou - Toto holds a very special place in our hearts. Toto is one in a million, from being a scared & nervous puppy to a happy girl who loves to splash in puddles with her dog buddies.</p>
+                </div>
+            </div>
+
+            <!-- Julie Anderson Review -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div>
+                        <h3 class="reviewer-name">Julie Anderson</h3>
+                        <p class="review-service">Weekly Adventures</p>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">My previously timid rescue absolutely loves Teila and Codie and really gets so excited for her weekly dog squad adventures! She comes back happy and crashes out for the rest of the day. Teila and Codie are so kind and loving towards the dogs and you can see how much they care.</p>
+                <div class="review-response">
+                    <p class="response-label">Response from TailTrek Adventures:</p>
+                    <p class="response-text">Hi Julie, thanks for a lovely review of our services. We look forward to picking up Pumpkin each week and her launching into the van. She makes everyone around her happy.</p>
+                </div>
+            </div>
+
+            <!-- Justine Carrier Review -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div>
+                        <h3 class="reviewer-name">Justine Carrier</h3>
+                        <p class="review-service">Dog Squad Group</p>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">The Dog Squad group is the best thing ever! Teila or Codie swing past your place while you're at work and pick up your bored, lonely dog and takes them out for a play date filled with exercise, fun, treats and adventure. No dog mum guilt when I come home to a happy and completely pooped boy.</p>
+                <div class="review-response">
+                    <p class="response-label">Response from TailTrek Adventures:</p>
+                    <p class="response-text">Thank you Justine! We absolutely adore our Bear. He is a remarkable dog with the kindest of hearts and the biggest of smiles.</p>
+                </div>
+            </div>
+
+            <!-- Lars Hoogvliet Review -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div>
+                        <h3 class="reviewer-name">Lars Hoogvliet</h3>
+                        <p class="review-service">Multiple Services</p>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">We've been using TailTrek Adventures for years and our dog Mobi absolutely loves it, can't get enough. Teila offers pickup and drop off services, and is very flexible. We always know Mobi is professionally cared for and living his best life when at with TT Adventures.</p>
+                <div class="review-response">
+                    <p class="response-label">Response from TailTrek Adventures:</p>
+                    <p class="response-text">Thanks for a lovely review Lars. Mobi certainly has found his second family when he comes to stay with mine.</p>
+                </div>
+            </div>
+
+            <!-- Amanda De haas Review -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div>
+                        <h3 class="reviewer-name">Amanda De haas</h3>
+                        <p class="review-service">Pet Minding & Training</p>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">TT's Pet Minding are AMAZING and wouldn't use anyone else to take care of my spoilt dachshund while being away for work, or holidays! From arranging the very first overnight stay they asked all the right questions and went over and above to fit in with Mila usual routine.</p>
+                <div class="review-response">
+                    <p class="response-label">Response from TailTrek Adventures:</p>
+                    <p class="response-text">Hello Amanda, I absolutely adore having Mila stay with me and my family. She is a little legend, she loves surfing and coming on any dog squad adventure.</p>
+                </div>
+            </div>
+
+            <!-- Courtney Stott Review -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div>
+                        <h3 class="reviewer-name">Courtney Stott</h3>
+                        <p class="review-service">Training & Adventures</p>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Our lives would be chaos and thousands of dollars in vet bills without Tailtrek adventures! We fostered another retriever Roy late last year so our other retriever Millie would have a play buddy. Codie and Teila from Tailtrek stepped in a saved the dogs, my house, our socks and savings account.</p>
+            </div>
+
+            <!-- Rachel Harrington Review -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div>
+                        <h3 class="reviewer-name">Rachel Harrington</h3>
+                        <p class="review-service">Regular Client</p>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">The best! My two golden retrievers Salty and Match, live their best lives with Teila… she treats them as her own… we know they're 100% cared for more than anywhere else. We love receiving the pictures she sends us while we are away!</p>
+            </div>
+
+            <!-- Sally Coleman Review -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div>
+                        <h3 class="reviewer-name">Sally Coleman</h3>
+                        <p class="review-service">Regular Adventures</p>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Our 8 year old spoodle MILO loves Telia and Codie at Trek adventures, and so do we!</p>
+                <div class="review-response">
+                    <p class="response-label">Response from TailTrek Adventures:</p>
+                    <p class="response-text">Hi Sally, Thanks for review! We have loved having Milo stay in our home & bringing him along on dog squad pack adventures.</p>
+                </div>
+            </div>
+
+            <!-- Gemma Hoogvliet Review -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div>
+                        <h3 class="reviewer-name">Gemma Hoogvliet</h3>
+                        <p class="review-service">Holiday Care</p>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">We couldn't be happier with the care Teila provides for our dog, Mobi, while we are on holidays. Mobi has the best holidays too! He is treated like a true member of the family. Mobi loves his daily adventures to the park and beach and has wonderful catch-ups with his doggy pals.</p>
+                <div class="review-response">
+                    <p class="response-label">Response from TailTrek Adventures:</p>
+                    <p class="response-text">Thanks for a beautiful review Gem. We love having Mobi stay with our family for dog holiday boarding and bringing him along on our dog squad group adventures.</p>
+                </div>
+            </div>
+
+            <!-- Zane Davidson Review -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div>
+                        <h3 class="reviewer-name">Zane Davidson</h3>
+                        <p class="review-service">Regular Client</p>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Incredible service, reliable and happy doggies.</p>
+                <div class="review-response">
+                    <p class="response-label">Response from TailTrek Adventures:</p>
+                    <p class="response-text">Thank you Zane!</p>
+                </div>
+            </div>
+
+            <!-- Teleah Kate Review -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div>
+                        <h3 class="reviewer-name">Teleah Kate</h3>
+                        <p class="review-service">Dog Walking & Socialization</p>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Teila is wonderful with our older pups. I needed some extra help with walking and socializing our dogs and she was more than happy to help out, going way beyond what I ever expected. My reactive dogs now have dog friends, they get walked to new areas each time and are living their best lives.</p>
+                <div class="review-response">
+                    <p class="response-label">Response from TailTrek Adventures:</p>
+                    <p class="response-text">We certainly have come a long way!!! What a team!!! They impress me every time I see them!</p>
+                </div>
+            </div>
+
+            <!-- Lou Hatter Extended Review -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div>
+                        <h3 class="reviewer-name">Lou Hatter</h3>
+                        <p class="review-service">Multiple Services</p>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Our baby girl, a rescue puppy (Bull Mastiff cross - so not little at all) who has just turned a year old has to be Telia's biggest fan!! I have never seen her get so excited to see someone pull up onto the drive! Telia has an amazing way with the dogs in her care. They are always full of smiles and wagging tails!</p>
+                <div class="review-response">
+                    <p class="response-label">Response from TailTrek Adventures:</p>
+                    <p class="response-text">Thank you for your lovely words, I love seeing the milestones she's made over the weeks & months! She's such a happy & sooky girl!</p>
+                </div>
+            </div>
+
+            <!-- Julie Anderson Extended Review -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div>
+                        <h3 class="reviewer-name">Julie Anderson</h3>
+                        <p class="review-service">Weekly Adventures & Training</p>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">They really go above and beyond and make sure each squad has a combo of dog personalities that work well together. It's so lovely to know that on those days I work long hours that my doggo still gets to explore and have a blast! And I know she is in excellent hands. Teila also takes the best pics of my dog on her adventures - an awesome perk!!</p>
+            </div>
+
+            <!-- Lars Hoogvliet Extended Review -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div>
+                        <h3 class="reviewer-name">Lars Hoogvliet</h3>
+                        <p class="review-service">Holiday Care</p>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">TT Adventures offers both boarding and day adventures such as walks and beach plays, both of which we regularly take advantage of. Highly recommend! The service is professional and our dog always comes back happy and well-cared for.</p>
+            </div>
+
+            <!-- Additional Reviews -->
+            <div class="review-card">
+                <div class="reviewer-header">
+                    <div>
+                        <h3 class="reviewer-name">Courtney Stott</h3>
+                        <p class="review-service">Daily Adventures</p>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Teila and Codie always provide updates, advice, house visits and videos of our dogs. I secretly love watching them and commentating what is going on down at the local beach or park while I'm at work. If you're looking for sound advice, up to date research, care and compassion for your dogs you need to contact Tailtrek adventures.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Premium Footer Section -->
+<footer class="site-footer">
+   
+
+    <!-- Footer Top Section -->
+    <div class="footer-container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="brand-info">
+                    <div class="logo-container">
+                        <img src="https://i.postimg.cc/9Q1Q80ZX/FB-IMG-1736567649313-modified.png" alt="TailTrek Logo" class="footer-logo">
+                        <div class="logo-glow"></div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/tailtrek_adventures/profilecard/" class="social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/TT.PET.PA/" class="social-link" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@tailtrek_adventures   " class="social-link" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="footer-nav">
+                <div class="footer-nav-group">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#pack-adventures">Pack Adventures</a></li>
+                        <li><a href="#solo-expeditions">Solo Expeditions</a></li>
+                        <li><a href="#training">Training Programs</a></li>
+                        <li><a href="#puppy-care">Puppy Care</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav-group">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#testimonials">Success Stories</a></li>
+                        <li><a href="#careers">Join Our Pack</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav-group">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#faq">FAQs</a></li>
+                        <li><a href="#blog">Pet Care Tips</a></li>
+                        <li><a href="#policies">Policies</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav-group newsletter">
+                    <h3>Join Our Pack</h3>
+                    <p>Subscribe for exclusive tips and updates</p>
+                    <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+                        <div class="input-group">
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit" aria-label="Subscribe">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+
+        <div class="footer-middle">
+            <div class="achievements">
+                <div class="achievement-badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28z"/>
+                    </svg>
+                    <span>Top-Rated Pet Service 2024</span>
+                </div>
+                <div class="achievement-badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <span>Certified Professional Team</span>
+                </div>
+                <div class="achievement-badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 9c0-3.31 2.69-6 6-6 1.56 0 3.07.59 4 1.5 1.93-1.82 4.07-1.82 6 0 1.93 1.82 2 4.18 2 6 0 3.28-3.4 6.36-8.55 11.03L12 21.35z"/>
+                    </svg>
+                    <span>500+ Happy Dogs & Counting</span>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Footer Bottom Section -->
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <p>&copy; 2024 TailTrek Adventures. All rights reserved.</p>
+                <nav class="legal-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#sitemap">Sitemap</a>
+                </nav>
+            </div>
+            <div class="footer-payment">
+                <span class="payment-label">Secure Payments</span>
+                <div class="payment-icons">
+                    <svg class="payment-icon" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+                    </svg>
+                    <svg class="payment-icon" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm-1 14H5c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+/* Footer Styles */
+.site-footer {
+    position: relative;
+    background: linear-gradient(to bottom, var(--color-dark-ocean), #032705d1);
+    color: var(--color-light);
+    padding: 6rem 0 2rem;
+    overflow: hidden;
+    margin-top: 5%;
+}
+
+.footer-background {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.footer-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(69, 202, 255, 0.03) 20%,
+        rgba(255, 27, 107, 0.03) 60%,
+        rgba(10, 10, 10, 1) 100%
+    );
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Footer Brand Section */
+.footer-brand {
+    max-width: 300px;
+}
+
+.logo-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+}
+
+.logo-glow {
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(
+        circle at center,
+        rgba(69, 202, 255, 0.2),
+        transparent 70%
+    );
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.brand-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.brand-name .highlight {
+    background: linear-gradient(45deg, var(--color-neon-blue), var(--color-neon-pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.brand-tagline {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, var(--color-neon-blue), var(--color-neon-pink));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-link:hover::before {
+    opacity: 1;
+}
+
+.social-link svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover svg {
+    transform: scale(1.2);
+}
+
+/* Footer Navigation */
+.footer-nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4rem;
+}
+
+.footer-nav-group h3 {
+    font-size: 1.2rem;
+    color: var(--color-neon-blue);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.footer-nav-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav-group ul li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-nav-group ul a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.footer-nav-group ul a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background: var(--color-neon-blue);
+    transition: width 0.3s ease;
+}
+
+.footer-nav-group ul a:hover {
+    color: var(--color-neon-blue);
+}
+
+.footer-nav-group ul a:hover::before {
+    width: 100%;
+}
+
+/* Newsletter Section */
+.newsletter p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1rem;
+}
+
+.newsletter-form .input-group {
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.newsletter-form .input-group:focus-within {
+    border-color: var(--color-neon-blue);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.newsletter-form input {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+.newsletter-form input:focus {
+    outline: none;
+}
+
+.newsletter-form button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: var(--color-neon-blue);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background: var(--color-neon-pink);
+    transform: translateX(3px);
+}
+
+.newsletter-form button svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--color-dark);
+}
+
+/* Achievements Section */
+.footer-middle {
+    margin: 4rem 0;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.achievements {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.achievement-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.achievement-badge:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-neon-blue);
+}
+
+.achievement-badge svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--color-neon-blue);
+}
+
+.achievement-badge span {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+.footer-legal {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.footer-legal p {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.legal-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.legal-links a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.legal-links a:hover {
+    color: var(--color-neon-blue);
+}
+
+.footer-payment {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.payment-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+.payment-icons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.payment-icon {
+    width: 32px;
+    height: 32px;
+    fill: rgba(255, 255, 255, 0.6);
+}
+
+/* Floating Elements */
+.floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+}
+
+.circle-1 {
+    width: 400px;
+    height: 400px;
+    background: rgba(69, 202, 255, 0.15);
+    top: 0;
+    right: -100px;
+}
+
+.circle-2 {
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 27, 107, 0.15);
+    bottom: 20%;
+    left: -100px;
+}
+
+.circle-3 {
+    width: 200px;
+    height: 200px;
+    background: rgba(180, 255, 0, 0.1);
+    bottom: 10%;
+    right: 20%;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .footer-nav {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 4rem 0 2rem;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .footer-brand {
+        max-width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-nav {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-legal {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .achievements {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* Mobile-First Media Queries V2 */
+
+/* Base Mobile Fixes */
+@media screen and (max-width: 768px) {
+    body {
+        padding-top: 60px; /* Reduced from 80px for mobile */
+    }
+
+    /* Navigation Fixes */
+    .nav-wrapper {
+        height: 60px; /* Fixed height for mobile */
+        padding: 0;
+    }
+
+    .navbar {
+        padding: 0 1rem;
+        height: 100%;
+    }
+
+    .logo {
+        width: 50px; /* Smaller logo for mobile */
+        height: 50px;
+        margin-top: 1.5rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .primary-cta {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* Hero Section Fixes */
+    .hero {
+        margin-top: 0; /* Remove margin as we're using padding-top on body */
+        min-height: auto; /* Allow natural height */
+        padding: 3rem 1rem;
+    }
+
+    .hero-container {
+        margin-top: 0;
+        padding-top: 1rem;
+    }
+
+    .hero-content {
+        padding: 0;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 8vw, 2.5rem);
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+
+    /* Rating Summary Fixes */
+    .rating-summary {
+        margin-top: 2rem;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .overall-rating {
+        padding: 1.5rem;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .rating-number {
+        font-size: 3rem;
+    }
+
+    /* Reviews Section */
+    .reviews-container {
+        padding: 2rem 1rem;
+    }
+
+    .filter-section {
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .filter-select {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .review-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Small Mobile Specific Adjustments */
+@media screen and (max-width: 480px) {
+    .hero-title {
+        font-size: 1.8rem;
+        padding: 0 0.5rem;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+        padding: 0 0.5rem;
+    }
+
+    .review-card {
+        padding: 1rem;
+    }
+
+    .reviewer-name {
+        font-size: 1.1rem;
+    }
+
+    .review-text {
+        font-size: 0.9rem;
+    }
+
+    .review-response {
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+}
+
+/* Medium Devices Refinements */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    body {
+        padding-top: 70px;
+    }
+
+    .hero {
+        padding-top: 4rem;
+    }
+
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* Portrait Mode Specific */
+@media screen and (max-width: 768px) and (orientation: portrait) {
+    .hero {
+        min-height: 60vh;
+    }
+}
+
+/* Landscape Mode Specific */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+    }
+    
+    .hero-content {
+        max-width: 600px;
+    }
+}
+
+/* Safe Area Adjustments */
+@supports (padding: max(0px)) {
+    .nav-wrapper,
+    .hero,
+    .reviews-container {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+    
+    body {
+        padding-top: max(60px, env(safe-area-inset-top));
+    }
+}
+
+/* High DPI Screen Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .nav-wrapper.scrolled {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+}
+
+/* Fix for iOS Safari Navigation Bar */
+@supports (-webkit-touch-callout: none) {
+    body {
+        padding-top: max(60px, env(safe-area-inset-top));
+    }
+    
+    .nav-wrapper {
+        height: max(60px, env(safe-area-inset-top) + 60px);
+    }
+}
+</style>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+// Initialize AOS animation library
+AOS.init({
+    duration: 800,
+    once: true,
+    offset: 100
+});
+
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initializeReviewCards();
+    initializeNavbar();
+    initializeFilters();
+});
+
+// Review Cards Initialization
+function initializeReviewCards() {
+    const reviewCards = document.querySelectorAll('.review-card');
+    reviewCards.forEach((card, index) => {
+        card.setAttribute('data-aos', 'fade-up');
+        card.setAttribute('data-aos-delay', index * 100);
+        // Ensure cards are visible initially
+        card.style.opacity = '1';
+        card.style.display = 'flex';
+    });
+}
+
+// Navbar Functionality
+function initializeNavbar() {
+    const navbar = document.querySelector('.nav-wrapper');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        if (currentScroll > lastScroll && currentScroll > navbar.offsetHeight) {
+            navbar.style.transform = 'translateY(-100%)';
+        } else {
+            navbar.style.transform = 'translateY(0)';
+        }
+        lastScroll = currentScroll;
+    });
+}
+
+// Filter Functionality
+function initializeFilters() {
+    const filterSelect = document.querySelector('.filter-select');
+    const sortSelect = document.querySelector('.filter-select:nth-child(2)');
+    const reviewCards = document.querySelectorAll('.review-card');
+    
+    if (filterSelect) {
+        filterSelect.addEventListener('change', (e) => {
+            const selectedService = e.target.value;
+            filterAndShowReviews(selectedService, reviewCards);
+        });
+    }
+
+    if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => {
+            const sortValue = e.target.value;
+            sortReviews(sortValue, reviewCards);
+        });
+    }
+}
+
+// Updated Filter Reviews Function
+function filterAndShowReviews(selectedService, cards) {
+    cards.forEach(card => {
+        const service = card.querySelector('.review-service').textContent;
+        if (selectedService === 'All Services' || service.includes(selectedService)) {
+            card.style.opacity = '1';
+            card.style.display = 'flex';
+            card.style.transform = 'translateY(0)';
+        } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.display = 'none';
+            }, 300);
+        }
+    });
+}
+
+// Sort Reviews Function
+function sortReviews(sortType, cards) {
+    const cardsArray = Array.from(cards);
+    const container = cards[0].parentElement;
+
+    switch(sortType) {
+        case 'Most Recent':
+            // Assuming first cards are most recent
+            cardsArray.sort((a, b) => 0.5 - Math.random()); // Simulated sort
+            break;
+        case 'Highest Rated':
+            cardsArray.sort((a, b) => {
+                const aStars = a.querySelector('.review-stars').textContent.length;
+                const bStars = b.querySelector('.review-stars').textContent.length;
+                return bStars - aStars;
+            });
+            break;
+        case 'Oldest':
+            cardsArray.reverse();
+            break;
+    }
+
+    // Remove and reappend in new order
+    cardsArray.forEach(card => {
+        container.appendChild(card);
+    });
+
+    // Trigger AOS refresh
+    AOS.refresh();
+}
+
+// Handle Newsletter Form Submission
+function handleNewsletterSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.querySelector('input[type="email"]').value;
+    
+    if (!validateEmail(email)) {
+        alert('Please enter a valid email address');
+        return;
+    }
+    console.log('Newsletter signup:', email);
+    form.reset();
+    alert('Thank you for subscribing!');
+}
+
+// Email Validation Helper
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+// Smooth Scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+</script>
+</body>
+</html>
+
