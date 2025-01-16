@@ -40,7 +40,7 @@
         --color-forest-dark: #1B5E20;      /* Dark forest background */
         
         /* Gradient Definitions */
-        --gradient-ocean: linear-gradient(135deg, var(--color-ocean-blue), var(--color-ocean-light));
+        --gradient-ocean: linear-gradient(135deg, var(--color-ocean-blue), white);
         --gradient-forest: linear-gradient(135deg, var(--color-forest-green), var(--color-grass));
         --gradient-sunset: linear-gradient(135deg, var(--color-sunset-pink), var(--color-lavender));
     }
@@ -168,7 +168,7 @@ body {
     right: 0;
     width: 100%;
     z-index: 9999; /* Increased z-index */
-    background: rgb(12 36 51);
+    background: #4932ff;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); /* Safari support */
     border-bottom: 1px solid rgba(255, 105, 180, 0.15);
@@ -308,7 +308,7 @@ body {
             align-items: center;
             padding: 8rem 2rem 4rem;
             overflow: hidden;
-             background: linear-gradient(to bottom, var(--color-dark-ocean), #032705d1);
+             background: linear-gradient(to bottom, #462efe, #3eff92);
         }
 
         .hero-container {
@@ -1242,7 +1242,7 @@ body {
 
 <style>
 .why-choose-section {
-    background: linear-gradient(to top, var(--color-dark-ocean), #032705d1);
+    background: linear-gradient(to top, #462efe, #3eff92);
     color: var(--text-primary);
     padding: 120px 24px;
     position: relative;
@@ -1264,7 +1264,7 @@ body {
 }
 
 .section-badge {
-    background: linear-gradient(135deg, var(--color-ocean-blue), var(--color-ocean-light));
+    background: linear-gradient(135deg, var(--color-sunset-pink), var(--color-lavender));
     padding: 8px 16px;
     border-radius: 50px;
     font-size: 14px;
@@ -1287,20 +1287,12 @@ body {
     position: relative;
 }
 
-.highlight {
-    position: relative;
-    display: inline-block;
-    background: linear-gradient(135deg, var(--color-ocean-light), var(--color-bright-sky));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    padding: 0 8px;
-}
 
 .highlight::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, var(--color-ocean-light), var(--color-bright-sky));
+    background: linear-gradient(135deg, white, var(--color-bright-sky));
     opacity: 0.1;
     border-radius: 4px;
     transform: skewX(-10deg);
@@ -1323,14 +1315,14 @@ body {
 }
 
 .feature-card {
-    background: rgba(255, 255, 255, 0.03);
+  background: linear-gradient(135deg, hsl(342deg 100% 71% / 98%), hsl(273deg 68% 59% / 90%));
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 32px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px)
 }
 
 .feature-card::before {
@@ -1347,7 +1339,7 @@ body {
 
 .feature-card:hover {
     transform: translateY(-8px);
-    border-color: var(--color-ocean-light);
+    border-color: white;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -1480,7 +1472,7 @@ body {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 8px;
-    background: linear-gradient(135deg, var(--color-ocean-light), var(--color-bright-sky));
+    background: white;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     line-height: 1.2;
@@ -1667,7 +1659,7 @@ body {
 
 <style>
 .services {
-    background: linear-gradient(to bottom, var(--color-dark-ocean), #032705d1);
+   background: linear-gradient(to bottom, #462efe, #3eff92);
     padding: 8rem 2rem;
     position: relative;
     overflow: hidden;
@@ -1693,11 +1685,7 @@ body {
     font-weight: 700;
 }
 
-.highlight {
-    color: var(--color-ocean-light);
-    position: relative;
-    display: inline-block;
-}
+
 
 .services-description {
     font-size: 1.25rem;
@@ -1714,7 +1702,7 @@ body {
 }
 
 .service-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: linear-gradient(135deg, hsl(342deg 100% 71% / 98%), hsl(273deg 68% 59% / 90%));
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 0;
@@ -1726,12 +1714,6 @@ body {
     overflow: hidden;
 }
 
-.service-card:hover:not(.disabled) {
-    transform: translateY(-5px);
-    border-color: var(--color-ocean-light);
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
 
 .card-content {
     padding: 2rem;
@@ -1756,7 +1738,7 @@ body {
 .service-icon-wrapper {
     width: 64px;
     height: 64px;
-    background: rgba(57, 160, 237, 0.1);
+    background: white;
     border-radius: 16px;
     display: flex;
     align-items: center;
@@ -1803,7 +1785,7 @@ body {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: var(--color-ocean-light);
+    color: white;
     transition: color 0.3s ease;
 }
 
@@ -1827,7 +1809,7 @@ body {
 
 .feature-list li::before {
     content: '→';
-    color: var(--color-ocean-light);
+    color: white;
     margin-right: 0.75rem;
     transition: all 0.3s ease;
 }
@@ -1852,7 +1834,7 @@ body {
 
 .service-cta {
     width: 100%;
-    background: var(--color-ocean-light);
+    background: linear-gradient(135deg, var(--color-ocean-light), var(--color-bright-sky));;
     color: white;
     border: none;
     padding: 0.875rem 1.5rem;
@@ -2079,7 +2061,7 @@ body {
 
 <style>
 .about-preview {
-    background: linear-gradient(to top, var(--color-dark-ocean), #032705d1);
+    background: linear-gradient(to top, #462efe, #3eff92);
     color: white;
     padding: 8rem 2rem;
     position: relative;
@@ -2172,18 +2154,7 @@ body {
     flex: 1;
 }
 
-.section-badge {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background: rgba(57, 160, 237, 0.1);
-    border: 1px solid rgba(57, 160, 237, 0.2);
-    border-radius: 100px;
-    color: var(--color-ocean-light);
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    backdrop-filter: blur(10px);
-}
+
 
 .about-title {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -2193,11 +2164,7 @@ body {
     color: white;
 }
 
-.highlight {
-    position: relative;
-    display: inline-block;
-    color: var(--color-ocean-light);
-}
+
 
 .about-description {
     font-size: 1.1rem;
@@ -2216,7 +2183,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    color: var(--color-ocean-light);
+    color: white;
     font-weight: 500;
 }
 
@@ -2552,7 +2519,7 @@ body {
 /* Container styles */
 .achievements-section {
     padding: 80px 0;
-    background: #314e33;
+    background: #3eff92;
 }
 
 .container {
@@ -2582,7 +2549,7 @@ body {
 
 .achievement-card:hover {
     transform: translateY(-5px);
-    border-color: var(--color-ocean-light);
+    border-color: white;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -2609,15 +2576,6 @@ body {
 }
 
 /* Value styles */
-.achievement-value {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    background: linear-gradient(135deg, var(--color-ocean-light), var(--color-bright-sky));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1.2;
-}
 
 /* Label styles */
 .achievement-label {
@@ -2660,7 +2618,7 @@ body {
     --color-bright-sky: #45caff;
 }
   .faq-section {
-    background: linear-gradient(to bottom, var(--color-dark-ocean), #032705d1);
+    background: linear-gradient(to bottom, #462efe, #3eff92);
     padding: 8rem 2rem;
     position: relative;
     overflow: hidden;
@@ -2680,28 +2638,7 @@ body {
     position: relative;
   }
 
-  .section-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1.5rem;
-    background: rgba(57, 160, 237, 0.1);
-    border: 1px solid rgba(57, 160, 237, 0.2);
-    border-radius: 100px;
-    margin-bottom: 2rem;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    color: var(--color-ocean-light);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-  }
 
-  .section-badge:hover {
-    background: rgba(57, 160, 237, 0.15);
-    border-color: rgba(57, 160, 237, 0.3);
-    transform: translateY(-2px);
-  }
 
   .section-badge svg {
     width: 20px;
@@ -2727,10 +2664,8 @@ body {
   .highlight {
     position: relative;
     display: inline-block;
-    color: var(--color-ocean-light);
-    background: linear-gradient(135deg, var(--color-ocean-light), var(--color-bright-sky));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: linear-gradient(135deg, var(--color-sunset-pink), var(--color-lavender));    -webkit-background-clip: text;
+    -webkit-text-fill-color: white;
   }
 
   .faq-grid {
@@ -2765,7 +2700,7 @@ body {
   .faq-header h3 {
     font-size: 1.25rem;
     font-weight: 600;
-    color: var(--color-ocean-light);
+    color: white;
     transition: color 0.3s ease;
   }
 
@@ -2790,12 +2725,12 @@ body {
   .toggle-btn svg {
     width: 24px;
     height: 24px;
-    fill: var(--color-ocean-light);
+    fill: white;
     transition: all 0.3s ease;
   }
 
   .faq-card.active .toggle-btn {
-    background: var(--color-ocean-light);
+    background: white;
     transform: rotate(45deg);
   }
 
@@ -2844,7 +2779,7 @@ body {
     content: "•";
     position: absolute;
     left: 0;
-    color: var(--color-ocean-light);
+    color: white;
     font-size: 1.2rem;
     line-height: 1.6;
   }
@@ -2992,9 +2927,9 @@ body {
                     </div>
                 </div>
 
-                <button type="submit" class="cta-button primary-cta">
-                    Submit Application
-                    <svg viewBox="0 0 24 24" fill="currentColor">
+                 <button type="submit" class="submit-button">
+                    <span class="button-text">Submit Application</span>
+                    <svg class="button-icon" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                     </svg>
                 </button>
@@ -3037,9 +2972,122 @@ body {
     </div>
 </section>
 <style>
+.submit-button {
+    /* Desktop Styles */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 18px 36px;
+    width: 100%;
+    max-width: 320px;
+    background: linear-gradient(135deg, #462efe, #3eff92);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(70, 46, 254, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-button svg {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.3s ease;
+}
+
+/* Desktop Hover States */
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(70, 46, 254, 0.35);
+    background: linear-gradient(135deg, #5741fe, #4fff9f);
+}
+
+.submit-button:hover svg {
+    transform: translateX(4px);
+}
+
+/* Desktop Active States */
+.submit-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(70, 46, 254, 0.2);
+}
+
+/* Desktop Loading State */
+.submit-button.loading {
+    background: linear-gradient(135deg, #3342cc, #32cc7b);
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* Desktop Success State */
+.submit-button.success {
+    background: linear-gradient(135deg, #32cc7b, #3eff92);
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .submit-button {
+        padding: 16px 28px;
+        max-width: 100%;
+        font-size: 15px;
+        gap: 10px;
+        box-shadow: 0 4px 12px rgba(70, 46, 254, 0.2);
+    }
+
+    .submit-button svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Small Mobile Styles */
+@media screen and (max-width: 480px) {
+    .submit-button {
+        padding: 14px 24px;
+        font-size: 14px;
+        gap: 8px;
+        font-weight: 600;
+        box-shadow: 0 3px 10px rgba(70, 46, 254, 0.15);
+    }
+
+    .submit-button svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Touch Device Specific */
+@media (hover: none) {
+    .submit-button {
+        /* Remove hover effects on touch devices */
+        transition: none;
+    }
+
+    .submit-button:hover {
+        transform: none;
+        box-shadow: 0 4px 15px rgba(70, 46, 254, 0.25);
+        background: linear-gradient(135deg, #462efe, #3eff92);
+    }
+
+    .submit-button:hover svg {
+        transform: none;
+    }
+
+    .submit-button:active {
+        background: linear-gradient(135deg, #3342cc, #32cc7b);
+        transform: scale(0.98);
+    }
+}
 /* Contact Section Styles */
 .contact-section {
-    background: linear-gradient(to top, var(--color-dark-ocean), #032705d1);
+    background: linear-gradient(to top, #462efe, #3eff92);
     padding: 8rem 2rem 6rem;
     position: relative;
     overflow: hidden;
@@ -3057,19 +3105,6 @@ body {
     margin-bottom: 4rem;
 }
 
-.section-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: rgba(69, 202, 255, 0.1);
-    border-radius: 100px;
-    margin-bottom: 2rem;
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
-    border: 1px solid rgba(69, 202, 255, 0.3);
-    backdrop-filter: blur(10px);
-}
 
 .section-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
@@ -3288,7 +3323,7 @@ body {
 .info-icon svg {
     width: 24px;
     height: 24px;
-    fill: var(--color-neon-blue);
+    fill: white;
 }
 
 .info-card h3 {
@@ -3518,7 +3553,7 @@ body {
 /* Footer Styles */
 .site-footer {
     position: relative;
-    background: linear-gradient(to bottom, var(--color-dark-ocean), #032705d1);
+    background: linear-gradient(to bottom, #462efe, #3eff92);
     color: var(--color-light);
     padding: 6rem 0 2rem;
     overflow: hidden;
