@@ -381,38 +381,72 @@ body {
             max-width: 540px;
         }
 
-        .cta-group {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
+        ./* Universal CTA Button Styles */
+.cta-button,
+.primary-cta,
+.secondary-cta {
+    display: inline-flex; /* Aligns content flexibly */
+    align-items: center; /* Centers content vertically */
+    justify-content: center; /* Centers content horizontally */
+    padding: 1rem 2rem; /* Button padding for size */
+    border-radius: 100px; /* Rounded corners */
+    font-family: 'Montserrat', sans-serif; /* Desired font */
+    font-size: 1rem; /* Font size */
+    font-weight: 600; /* Font weight for emphasis */
+    text-align: center; /* Text alignment */
+    cursor: pointer; /* Pointer cursor */
+    transition: all 0.3s ease; /* Smooth hover animations */
+    position: relative; /* For any additional effects */
+    overflow: hidden; /* Prevents content overflow */
+    box-shadow: 0 4px 12px rgba(255, 107, 151, 0.2); /* Subtle shadow */
+    line-height: 1; /* Consistent text alignment */
+}
 
-        .cta-button {
-            padding: 1rem 2rem;
-            border-radius: 100px;
-            font-family: inherit;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
+/* Primary CTA Button Style */
+.primary-cta {
+    background: linear-gradient(135deg, var(--color-sunset-pink), var(--color-lavender)); /* Gradient */
+    color: white; /* Text color */
+    border: none; /* No border */
+}
 
-       
-        .secondary-cta {
-            background: transparent;
-            color:   pink;
-            border: 1px solid  pink;
-        }
+.primary-cta:hover {
+    transform: translateY(-2px); /* Hover lift effect */
+    box-shadow: 0 6px 16px rgba(255, 107, 151, 0.4); /* Stronger hover shadow */
+}
 
-        .secondary-cta:hover {
-            border-color: white;
-            background: rgba(255, 255, 255, 0.1);
-        }
+/* Secondary CTA Button Style */
+.secondary-cta {
+    background: linear-gradient(135deg, var(--color-sunset-pink), var(--color-lavender)); /* Transparent background */
+    color: white; /* Gradient-inspired pink */
+    border: 2px solid var(--color-sunset-pink); /* Border matching gradient */
+}
+
+.secondary-cta:hover {
+     transform: translateY(-2px); /* Hover lift effect */
+    box-shadow: 0 6px 16px rgba(255, 107, 151, 0.4); /* Stronger hover shadow */
+}
+
+/* CTA Group for Layout */
+.cta-group {
+    display: flex; /* Align buttons in a row */
+    gap: 1.5rem; /* Space between buttons */
+    margin-bottom: 3rem; /* Space below the group */
+}
+
+/* Optional Icon Styling for Buttons */
+.cta-button svg,
+.primary-cta svg,
+.secondary-cta svg {
+    margin-left: 0.5rem; /* Space between text and icon */
+    vertical-align: middle; /* Aligns icon with text */
+}
+
+/* Example Button Typography Adjustment */
+.cta-button {
+    font-size: 1.1rem; /* Slightly larger font for readability */
+    font-weight: 600; /* Bold */
+    text-transform: capitalize; /* Makes text stylish */
+}
 
         .hero-stats {
             display: flex;
@@ -1203,23 +1237,6 @@ body {
             </div>
         </div>
 
-        <div class="achievements-grid" data-aos="fade-up">
-            <div class="achievement-card">
-                <div class="achievement-icon">🐾</div>
-                <div class="achievement-value" data-value="2500">0</div>
-                <div class="achievement-label">Happy Pets</div>
-            </div>
-            <div class="achievement-card">
-                <div class="achievement-icon">⭐</div>
-                <div class="achievement-value" data-value="10">0</div>
-                <div class="achievement-label">Years of Excellence</div>
-            </div>
-            <div class="achievement-card">
-                <div class="achievement-icon">🏆</div>
-                <div class="achievement-value" data-value="100">0</div>
-                <div class="achievement-label">Satisfaction Rate</div>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -1989,8 +2006,27 @@ body {
         opacity: 0.8;
     }
 }
-</style>
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 80px;
+}
 
+.achievement-card {
+    text-align: center;
+    padding: 32px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    color:black;
+
+}
+
+/* Rest of your CSS styles */
+</style>
 
 
 <section id="about-preview" class="about-preview">
@@ -2490,7 +2526,139 @@ body {
       </div>
     </div>
   </div>
-</section><style>
+</section>
+<section class="achievements-section">
+    <div class="container">
+        <div class="achievements-grid" data-aos="fade-up">
+            <div class="achievement-card">
+                <div class="achievement-icon">🐾</div>
+                <div class="achievement-value" data-value="2500">0</div>
+                <div class="achievement-label">Happy Pets</div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">⭐</div>
+                <div class="achievement-value" data-value="10">0</div>
+                <div class="achievement-label">Years of Excellence</div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">🏆</div>
+                <div class="achievement-value" data-value="100">0</div>
+                <div class="achievement-label">Satisfaction Rate</div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+/* Container styles */
+.achievements-section {
+    padding: 80px 0;
+    background: #314e33;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Grid layout */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 80px;
+}
+
+/* Card styles */
+.achievement-card {
+    text-align: center;
+    padding: 32px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-ocean-light);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon styles */
+.achievement-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    position: relative;
+    display: inline-block;
+}
+
+.achievement-icon::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    background: rgba(57, 160, 237, 0.1);
+    border-radius: 50%;
+    z-index: -1;
+    transition: transform 0.3s ease;
+}
+
+.achievement-card:hover .achievement-icon::after {
+    transform: scale(1.2);
+}
+
+/* Value styles */
+.achievement-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--color-ocean-light), var(--color-bright-sky));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+}
+
+/* Label styles */
+.achievement-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Animation keyframes */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .achievements-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 24px;
+        margin-top: 40px;
+    }
+
+    .achievement-card {
+        padding: 24px;
+    }
+
+    .achievement-value {
+        font-size: 2.8rem;
+    }
+}
+
+/* Required CSS variables */
+:root {
+    --color-ocean-light: #39a0ed;
+    --color-bright-sky: #45caff;
+}
   .faq-section {
     background: linear-gradient(to bottom, var(--color-dark-ocean), #032705d1);
     padding: 8rem 2rem;
