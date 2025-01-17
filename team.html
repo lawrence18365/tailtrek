@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,30 +52,73 @@
             overflow-x: hidden;
             padding-top: 80px;
         }
+        /* Base styles */
+        body {
+            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
 
         /* Navigation Styles */
     /* Fixed Navigation Styles */
+/* Navbar Core Styles */
+
+/* Navbar Styles */
 .nav-wrapper {
-    position: fixed !important; /* Force fixed position */
+    position: fixed !important;
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
-    z-index: 9999; /* Increased z-index */
+    z-index: 9999;
     background: #4932ff;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 105, 180, 0.15);
     padding: 1rem 0;
-    transform: translateZ(0); /* Force hardware acceleration */
+    transform: translateZ(0);
     -webkit-transform: translateZ(0);
-    will-change: transform; /* Optimize for animations */
+    will-change: transform;
     transition: transform 0.3s ease;
 }
-.nav-wrapper * {
-    transform: none !important; /* Prevent GSAP from affecting navbar children */
+/* Reset any previous button styles */
+.nav-links .nav-cta {
+    all: initial; /* Clear all styles first */
+    font-family: 'Poppins', sans-serif;
 }
 
+/* Base button styles */
+.cta-button,
+.nav-links .nav-cta {
+    padding: 0.75rem 1.5rem;
+    border-radius: 100px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Primary CTA specific styles */
+.primary-cta,
+.nav-links .nav-cta {
+    background: linear-gradient(135deg, var(--color-sunset-pink), var(--color-lavender));
+    color: white;
+    border: none;
+}
+
+/* Hover effects */
+.primary-cta:hover,
+.nav-links .nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 107, 151, 0.4);
+}
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -95,12 +139,7 @@
     height: 120px;
     border-radius: 50%;
     object-fit: contain;
-    margin-top:1rem;
-}
-
-.company-name {
-    font-size: 1.5rem;
-    color: white;
+    margin-top: 1rem;
 }
 
 .nav-links {
@@ -114,34 +153,72 @@
     text-decoration: none;
     font-size: 1.1rem;
     transition: color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
 }
 
 .nav-link:hover {
     color: pink;
 }
 
-.cta-button {
-    padding: 0.75rem 1.5rem;
+/* Specific styling for the navbar button */
+.nav-links .nav-cta {
+    border: none;
     border-radius: 100px;
-    font-family: inherit;
+    color: white;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    box-shadow: 0 4px 12px rgba(69, 202, 255, 0.2)
 }
 
-.primary-cta {
-     background: transparent;
-    color: pink;
-    border: 2px solid pink;
-}
-}
-
-.primary-cta:hover {
+.nav-links .nav-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+    box-shadow: 0 6px 20px rgba(69, 202, 255, 0.3);
 }
 
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .nav-wrapper {
+        padding: 0.75rem 0;
+    }
+    
+    .navbar {
+        padding: 0 1rem;
+    }
+    
+    .logo {
+        width: 90px;
+        height: 80px;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+}
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .nav-wrapper {
+        padding: 0.75rem 0;
+    }
+    
+    .navbar {
+        padding: 0 1rem;
+    }
+    
+    .logo {
+        width: 90px;
+        height: 80px;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+}
         /* Hero Section */
           /* Hero Section Fixes */
         .hero {
@@ -161,10 +238,11 @@
         }
     
         .hero-title {
-            font-size: clamp(2rem, 8vw, 2.5rem);
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
+    font-size: clamp(2rem, 8vw, 2.5rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    font-family: "Sour Gummy", sans-serif;
+}
     
         .hero-description {
             font-size: 1rem;
@@ -419,7 +497,7 @@
     </style>
 </head>
 <body>
-    <nav class="nav-wrapper">
+<nav class="nav-wrapper">
     <div class="navbar">
         <div class="logo-container">
             <a href="/tailtrek/index">
@@ -429,11 +507,10 @@
         <div class="nav-links">
             <a href="/tailtrek/team" class="nav-link">Our Team</a>
             <a href="/tailtrek/reviews" class="nav-link">Our Reviews</a>
-            <button class="cta-button primary-cta">Book Adventure</button>
+            <button class="nav-cta primary-cta">Book Adventure</button>
         </div>
     </div>
 </nav>
-
 
     <section class="hero">
         <div class="hero-container">
