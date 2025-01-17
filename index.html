@@ -2810,8 +2810,20 @@ body {
                         </div>
 
                         <div class="form-group">
-                            <input type="text" id="contactTime" name="contactTime" required>
-                            <label for="contactTime">Best Day/Time for Meet & Greet</label>
+                            <input type="text" id="meetTime" name="meetTime" required>
+                            <label for="meetTime">Best Day/Time for Meet & Greet</label>
+                            <div class="form-highlight"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="tel" id="emergencyContact1" name="emergencyContact1" required>
+                            <label for="emergencyContact1">Emergency Contact Number</label>
+                            <div class="form-highlight"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="tel" id="emergencyContact2" name="emergencyContact2" required>
+                            <label for="emergencyContact2">Emergency Contact Number No.2</label>
                             <div class="form-highlight"></div>
                         </div>
 
@@ -2970,7 +2982,7 @@ body {
 
                         <div class="form-group full-width">
                             <textarea id="recentChanges" name="recentChanges" rows="2"></textarea>
-                            <label for="recentChanges">Any major changes in the last year? (moving, new baby/pet, loss, renovations)</label>
+                            <label for="recentChanges">Any major changes in the last year? (moving, new baby or pet)</label>
                             <div class="form-highlight"></div>
                         </div>
                     </div>
@@ -2999,108 +3011,17 @@ body {
                 </div>
 
                 <button type="submit" class="dogform-submit-btn dogform-submit-primary">
-    Submit Application
-    <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-    </svg>
-</button>
-
+                    Submit Application
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
             </form>
         </div>
     </div>
 </section>
+
 <style>
-/* Submit Button Styles */
-.dogform-submit-btn {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    width: 100%;
-    padding: 16px 32px;
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #ffffff;
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-                0 2px 4px -1px rgba(0, 0, 0, 0.06),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.dogform-submit-btn svg {
-    width: 24px;
-    height: 24px;
-    transform: translateX(0);
-    transition: transform 0.3s ease;
-}
-
-/* Hover Effects */
-.dogform-submit-btn:hover {
-    background: linear-gradient(135deg, #4338ca, #6d28d9);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2),
-                0 4px 6px -2px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.dogform-submit-btn:hover svg {
-    transform: translateX(4px);
-}
-
-/* Active State */
-.dogform-submit-btn:active {
-    transform: translateY(1px);
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1),
-                0 1px 2px -1px rgba(0, 0, 0, 0.06);
-}
-
-/* Focus State */
-.dogform-submit-btn:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3),
-                0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-/* Loading State Animation */
-.dogform-submit-btn.dogform-submit-loading {
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
-    cursor: wait;
-    opacity: 0.8;
-}
-
-.dogform-submit-btn.dogform-submit-loading svg {
-    animation: dogform-submit-bounce 1s infinite;
-}
-
-@keyframes dogform-submit-bounce {
-    0%, 100% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(8px);
-    }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 640px) {
-    .dogform-submit-btn {
-        padding: 14px 24px;
-        font-size: 1rem;
-    }
-    
-    .dogform-submit-btn svg {
-        width: 20px;
-        height: 20px;
-    }
-}
-</style>
-<style>/* Contact Section Core Styles */
 :root {
     --form-bg: rgba(20, 24, 48, 0.95);
     --input-bg: rgba(255, 255, 255, 0.07);
@@ -3112,8 +3033,11 @@ body {
     --accent-hover: #62d3ff;
     --error-color: #ff4d6b;
     --success-color: #4caf50;
+    --color-sunset-pink: #FF6B6B;
+    --color-lavender: #9B6BFF;
 }
 
+/* Contact Section Core Styles */
 .contact-section {
     background: linear-gradient(to top, #462efe, #3eff92);
     min-height: 100vh;
@@ -3276,8 +3200,9 @@ body {
 .form-group input:not(:placeholder-shown) + label,
 .form-group select:not(:placeholder-shown) + label,
 .form-group textarea:not(:placeholder-shown) + label {
-    transform: translateY(-1.75rem) scale(0.85);
-    color: var(--accent-color);
+    top: 0;
+    transform: translateY(-100%) scale(0.85);
+    color: white;
 }
 
 /* Checkbox Grid */
@@ -3362,6 +3287,82 @@ body {
     color: var(--accent-hover);
 }
 
+/* Submit Button Styles */
+.dogform-submit-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 16px 32px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.dogform-submit-btn svg {
+    width: 24px;
+    height: 24px;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effects */
+.dogform-submit-btn:hover {
+    background: linear-gradient(135deg, #4338ca, #6d28d9);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2),
+                0 4px 6px -2px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.dogform-submit-btn:hover svg {
+    transform: translateX(4px);
+}
+
+/* Active State */
+.dogform-submit-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1),
+                0 1px 2px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Focus State */
+.dogform-submit-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3),
+                0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading State Animation */
+.dogform-submit-btn.dogform-submit-loading {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    cursor: wait;
+    opacity: 0.8;
+}
+
+.dogform-submit-btn.dogform-submit-loading svg {
+    animation: dogform-submit-bounce 1s infinite;
+}
+
+@keyframes dogform-submit-bounce {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(8px);
+    }
+}
 
 /* Form Validation */
 .form-group.error input,
@@ -3380,23 +3381,6 @@ body {
 
 .form-group.error .error-message {
     display: block;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .form-grid,
-    .checkbox-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-form {
-        padding: 1.5rem;
-    }
-
-    .section-badge {
-        padding: 0.5rem 1rem;
-        font-size: 0.85rem;
-    }
 }
 
 /* Animations */
@@ -3419,135 +3403,38 @@ body {
 *:focus-visible {
     outline: 2px solid var(--accent-color);
     outline-offset: 2px;
-}</style>
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .form-grid,
+    .checkbox-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .section-badge {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .dogform-submit-btn {
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+    
+    .dogform-submit-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+</style>
+
+
 <!-- Premium Footer Section -->
-<footer class="site-footer">
-   
-
-    <!-- Footer Top Section -->
-    <div class="footer-container">
-        <div class="footer-top">
-            <div class="footer-brand">
-                <div class="brand-info">
-                    <div class="logo-container">
-                        <img src="https://i.postimg.cc/9Q1Q80ZX/FB-IMG-1736567649313-modified.png" alt="TailTrek Logo" class="footer-logo">
-                        <div class="logo-glow"></div>
-                    </div>
-                </div>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/tailtrek_adventures/profilecard/" class="social-link" aria-label="Instagram">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.facebook.com/TT.PET.PA/" class="social-link" aria-label="Facebook">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.tiktok.com/@tailtrek_adventures   " class="social-link" aria-label="TikTok">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <nav class="footer-nav">
-                <div class="footer-nav-group">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#pack-adventures">Pack Adventures</a></li>
-                        <li><a href="#solo-expeditions">Solo Expeditions</a></li>
-                        <li><a href="#training">Training Programs</a></li>
-                        <li><a href="#puppy-care">Puppy Care</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-nav-group">
-                    <h3>Company</h3>
-                    <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#team">Our Team</a></li>
-                        <li><a href="#testimonials">Success Stories</a></li>
-                        <li><a href="#careers">Join Our Pack</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-nav-group">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="#contact">Contact Us</a></li>
-                        <li><a href="#faq">FAQs</a></li>
-                        <li><a href="#blog">Pet Care Tips</a></li>
-                        <li><a href="#policies">Policies</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-nav-group newsletter">
-                    <h3>Join Our Pack</h3>
-                    <p>Subscribe for exclusive tips and updates</p>
-                    <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
-                        <div class="input-group">
-                            <input type="email" placeholder="Enter your email" required>
-                            <button type="submit" aria-label="Subscribe">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </nav>
-        </div>
-
-        <div class="footer-middle">
-            <div class="achievements">
-                <div class="achievement-badge">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28z"/>
-                    </svg>
-                    <span>Top-Rated Pet Service 2024</span>
-                </div>
-                <div class="achievement-badge">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
-                    <span>Certified Professional Team</span>
-                </div>
-                <div class="achievement-badge">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 9c0-3.31 2.69-6 6-6 1.56 0 3.07.59 4 1.5 1.93-1.82 4.07-1.82 6 0 1.93 1.82 2 4.18 2 6 0 3.28-3.4 6.36-8.55 11.03L12 21.35z"/>
-                    </svg>
-                    <span>500+ Happy Dogs & Counting</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer Bottom Section -->
-        <div class="footer-bottom">
-            <div class="footer-legal">
-                <p>&copy; 2024 TailTrek Adventures. All rights reserved.</p>
-                <nav class="legal-links">
-                    <a href="#privacy">Privacy Policy</a>
-                    <a href="#terms">Terms of Service</a>
-                    <a href="#sitemap">Sitemap</a>
-                </nav>
-            </div>
-            <div class="footer-payment">
-                <span class="payment-label">Secure Payments</span>
-                <div class="payment-icons">
-                    <svg class="payment-icon" viewBox="0 0 24 24">
-                        <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
-                    </svg>
-                    <svg class="payment-icon" viewBox="0 0 24 24">
-                        <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm-1 14H5c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1z"/>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
 
 <style>
 /* Footer Styles */
@@ -3986,6 +3873,395 @@ body {
 }
 
 </style>
+<!-- Premium Footer Section with Modals -->
+<!-- Privacy Policy Modal -->
+<div id="privacyModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Privacy Policy</h2>
+            <button class="modal-close" onclick="closeModal('privacyModal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <h3>Your Privacy Matters</h3>
+            <p>Last updated: January 2024</p>
+            <div class="policy-section">
+                <h4>Information We Collect</h4>
+                <p>We collect information to provide better services to our clients and their pets, including:</p>
+                <ul>
+                    <li>Contact information (name, email, phone number)</li>
+                    <li>Pet information (name, breed, age, medical history)</li>
+                    <li>Service preferences and history</li>
+                </ul>
+            </div>
+            <!-- Add more policy content as needed -->
+        </div>
+    </div>
+</div>
+
+<!-- Terms & Conditions Modal -->
+<div id="termsModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Terms & Conditions</h2>
+            <button class="modal-close" onclick="closeModal('termsModal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <h3>Service Agreement</h3>
+            <p>Effective date: January 2024</p>
+            <div class="terms-section">
+                <h4>Service Terms</h4>
+                <p>By using our services, you agree to:</p>
+                <ul>
+                    <li>Provide accurate pet information</li>
+                    <li>Maintain current vaccinations</li>
+                    <li>Adhere to cancellation policies</li>
+                </ul>
+            </div>
+            <!-- Add more terms content as needed -->
+        </div>
+    </div>
+</div>
+
+<!-- Original Footer HTML -->
+<footer class="site-footer">
+   
+
+    <!-- Footer Top Section -->
+    <div class="footer-container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="brand-info">
+                    <div class="logo-container">
+                        <img src="https://i.postimg.cc/9Q1Q80ZX/FB-IMG-1736567649313-modified.png" alt="TailTrek Logo" class="footer-logo">
+                        <div class="logo-glow"></div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/tailtrek_adventures/profilecard/" class="social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/TT.PET.PA/" class="social-link" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@tailtrek_adventures   " class="social-link" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="footer-nav">
+                <div class="footer-nav-group">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#pack-adventures">Pack Adventures</a></li>
+                        <li><a href="#solo-expeditions">Solo Expeditions</a></li>
+                        <li><a href="#training">Training Programs</a></li>
+                        <li><a href="#puppy-care">Puppy Care</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav-group">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#testimonials">Success Stories</a></li>
+                        <li><a href="#careers">Join Our Pack</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav-group">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#faq">FAQs</a></li>
+                        <li><a href="#blog">Pet Care Tips</a></li>
+                        <li><a href="#policies">Policies</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav-group newsletter">
+                    <h3>Join Our Pack</h3>
+                    <p>Subscribe for exclusive tips and updates</p>
+                    <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+                        <div class="input-group">
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit" aria-label="Subscribe">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+
+        <div class="footer-middle">
+            <div class="achievements">
+                <div class="achievement-badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28z"/>
+                    </svg>
+                    <span>Top-Rated Pet Service 2024</span>
+                </div>
+                <div class="achievement-badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <span>Certified Professional Team</span>
+                </div>
+                <div class="achievement-badge">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 9c0-3.31 2.69-6 6-6 1.56 0 3.07.59 4 1.5 1.93-1.82 4.07-1.82 6 0 1.93 1.82 2 4.18 2 6 0 3.28-3.4 6.36-8.55 11.03L12 21.35z"/>
+                    </svg>
+                    <span>500+ Happy Dogs & Counting</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom Section -->
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <p>&copy; 2024 TailTrek Adventures. All rights reserved.</p>
+                <nav class="legal-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#sitemap">Sitemap</a>
+                </nav>
+            </div>
+            <div class="footer-payment">
+                <span class="payment-label">Secure Payments</span>
+                <div class="payment-icons">
+                    <svg class="payment-icon" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+                    </svg>
+                    <svg class="payment-icon" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm-1 14H5c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="footer-bottom">
+            <div class="footer-legal">
+                <p>&copy; 2024 TailTrek Adventures. All rights reserved.</p>
+                <nav class="legal-links">
+                    <a href="#" onclick="openModal('privacyModal'); return false;">Privacy Policy</a>
+                    <a href="#" onclick="openModal('termsModal'); return false;">Terms of Service</a>
+                    <a href="#sitemap">Sitemap</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    opacity: 1;
+    animation: modalFadeIn 0.3s ease forwards;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    border-radius: 20px;
+    position: relative;
+    transform: translateY(-50px);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    padding: 1.5rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.75rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.modal-body {
+    padding: 2rem;
+    max-height: 70vh;
+    overflow-y: auto;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.modal-body h3 {
+    color: #fff;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.modal-body h4 {
+    color: var(--color-neon-blue);
+    font-size: 1.1rem;
+    margin: 1.5rem 0 1rem;
+}
+
+.modal-body p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.modal-body ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.modal-body li {
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.policy-section, .terms-section {
+    margin-bottom: 2rem;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsive Modal Styles */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+        margin: 5vh auto;
+    }
+
+    .modal-header {
+        padding: 1rem 1.5rem;
+    }
+
+    .modal-body {
+        padding: 1.5rem;
+    }
+
+    .modal-close {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* Add to your existing CSS */
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+</style>
+
+<script>
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    document.body.style.overflow = 'hidden';
+    modal.classList.add('active');
+
+    // Close on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal(modalId);
+    });
+
+    // Close on outside click
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal(modalId);
+    });
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    document.body.style.overflow = '';
+    modal.classList.remove('active');
+}
+
+// Prevent modal body clicks from closing the modal
+document.querySelectorAll('.modal-content').forEach(content => {
+    content.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+});
+</script>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
