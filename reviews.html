@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,18 +48,16 @@
         }
 
         body {
-            background: var(--color-dark-ocean);
-            color: white;
-            font-family: 'Sour Gummy', system-ui, -apple-system, sans-serif;
-            line-height: 1.5;
-            overflow-x: hidden;
-            padding-top: 80px; /* Add this to account for fixed navbar */
-
-        }
+             color: white;
+    font-family: 'Sour Gummy', system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+    padding-top: 80px;
+}
 
         /* Reviews Page Specific Styles */
       .review-card {
-    background: rgba(255, 255, 255, 0.03);
+   background: linear-gradient(135deg, hsl(342deg 100% 71% / 98%), hsl(273deg 68% 59% / 90%));
     border: 1px solid rgba(255, 105, 180, 0.1);
     border-radius: 1.25rem;
     padding: 0; /* Removed padding here to control internal spacing better */
@@ -92,7 +91,7 @@
 .reviewer-name {
     font-size: 1.25rem;
     font-weight: 600;
-    color: var(--color-ocean-light);
+    color: white;
     margin: 0;
 }
 
@@ -105,7 +104,7 @@
 .review-stars {
     display: flex;
     gap: 0.25rem;
-    color: var(--color-sunset-pink);
+    color: white;
     margin-bottom: 1rem;
     font-size: 1.1rem;
 }
@@ -128,7 +127,7 @@
 
 .response-label {
     font-size: 0.9rem;
-    color: var(--color-sunset-pink);
+    color: white;
     margin-bottom: 0.5rem;
     font-weight: 500;
 }
@@ -157,16 +156,19 @@
         }
 
         .rating-text {
-            color: rgba(255, 255, 255, 0.8);
+            color: #ff6b97;
             font-size: 1.1rem;
             margin-top: 0.5rem;
         }
 
-        .reviews-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
+        .reviews-container { 
+             margin: 0;
+    padding: 4rem 2rem;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(to bottom, #3eff92, #3eff92); /* Solid color to match */
+}
 
         .filter-section {
             display: flex;
@@ -197,12 +199,13 @@
 
         .reviews-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem; /* Add bottom margin */
+}
 
         .review-card {
-            background: rgba(255, 255, 255, 0.03);
+            
             border: 1px solid rgba(255, 105, 180, 0.1);
             border-radius: 1.25rem;
             padding: 2rem;
@@ -225,7 +228,7 @@
         .reviewer-name {
             font-size: 1.25rem;
             font-weight: 600;
-            color: var(--color-ocean-light);
+            color: white;
             margin: 0;
         }
 
@@ -238,7 +241,7 @@
         .review-stars {
             display: flex;
             gap: 0.25rem;
-            color: var(--color-sunset-pink);
+            color: white;
             margin-bottom: 1rem;
             font-size: 1.1rem;
         }
@@ -256,12 +259,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .response-label {
-            font-size: 0.9rem;
-            color: var(--color-sunset-pink);
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
 
         .response-text {
             font-size: 0.95rem;
@@ -294,14 +291,10 @@
     margin-bottom: 0.5rem;
 }
 
-.rating-text {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 1rem;
-    margin-top: 0.5rem;
-}
+
 
 .review-stars {
-    color: var(--color-sunset-pink);
+    color: white;
     font-size: 1.5rem;
     letter-spacing: 2px;
 }
@@ -362,108 +355,108 @@
                 padding: 1.25rem;
             }
         }
-         /* Navigation Styles */
-        .nav-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            z-index: 9999;
-            background: transparent; /* Change from rgb(12 36 51) to transparent */
-    transition: background 0.3s ease, transform 0.3s ease;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 105, 180, 0.15);
-            padding: 1rem 0;
-            transform: translateZ(0);
-        }
-        /* Add this new style for scrolled state */
-        .nav-wrapper.scrolled {
-            background: rgb(12 36 51);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: contain;
-            margin-top: 1rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: pink;
-        }
-
-        .primary-cta {
-            background: transparent;
-            color: pink;
-            border: 2px solid pink;
-            padding: 0.75rem 1.5rem;
-            border-radius: 100px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .primary-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
-        }
-    }
-     /* Hero Section */
-        .hero {
-            position: relative;
-            min-height: 80vh;
-            margin-top: 80px; /* Negative margin to pull hero up under navbar */
-            display: flex;
-            align-items: center;
-            padding: 2rem 4rem;
-            overflow: hidden;
-            background: linear-gradient(to bottom, var(--color-dark-ocean), #032705d1);
-            padding-top: calc(80px + 8rem); /* Adjust padding to account for navbar height */
-
-        }
-        /* Optional: Add gradient overlay to hero to help with text legibility */
-.hero::before {
-    content: '';
-    position: absolute;
+        
+/* Fixed Navigation Styles */
+.nav-wrapper {
+    position: fixed !important; /* Force fixed position */
     top: 0;
     left: 0;
     right: 0;
-    height: 160px; /* Adjust as needed */
-    background: linear-gradient(to bottom, rgba(10, 33, 51, 0.8), transparent);
-    pointer-events: none;
+    width: 100%;
+    z-index: 9999; /* Increased z-index */
+    background: #4932ff;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border-bottom: 1px solid rgba(255, 105, 180, 0.15);
+    padding: 1rem 0;
+    transform: translateZ(0); /* Force hardware acceleration */
+    -webkit-transform: translateZ(0);
+    will-change: transform; /* Optimize for animations */
+    transition: transform 0.3s ease;
 }
+.nav-wrapper * {
+    transform: none !important; /* Prevent GSAP from affecting navbar children */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: contain;
+    margin-top:1rem;
+}
+
+.company-name {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: pink;
+}
+
+.cta-button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 100px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+    
+
+.primary-cta {
+     background: transparent;
+    color: pink;
+    border: 2px solid pink;
+}
+
+
+.primary-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+}
+     /* Hero Section */
+        .hero {
+            position: relative;
+    min-height: 80vh;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    padding: 2rem 4rem;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #462efe, #3eff92);
+}
+        /* Optional: Add gradient overlay to hero to help with text legibility */
 
         .hero-container {
             max-width: 1600px;
@@ -507,7 +500,7 @@
         }
 
         .highlight {
-            color: var(--color-ocean-light);
+            color: white;
             position: relative;
             display: inline-block;
         }
@@ -532,16 +525,19 @@
     </style>
 </head><body>
     <nav class="nav-wrapper">
-        <div class="navbar">
-            <div class="logo-container">
-                <img src="https://i.postimg.cc/9Q1Q80ZX/FB-IMG-1736567649313-modified.png" alt="TailTrek Logo" class="logo">
-            </div>
-            <div class="nav-links">
-                <a href="/" class="nav-link">Home</a>
-                <button class="primary-cta">Book Adventure</button>
-            </div>
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="https://i.postimg.cc/9Q1Q80ZX/FB-IMG-1736567649313-modified.png" alt="TailTrek Logo" class="logo">
+    
         </div>
-    </nav>
+        <div class="nav-links">
+            <a href="/team" class="nav-link">Our Team</a>
+            <a href="/reviews" class="nav-link">Our Reviews</a>
+
+            <button class="cta-button primary-cta">Book Adventure</button>
+        </div>
+    </div>
+</nav>
     <section class="hero">
     <div class="hero-container">
         <div class="hero-content">
@@ -561,20 +557,6 @@
 
     <!-- Reviews Grid -->
     <div class="reviews-container">
-        <div class="filter-section">
-            <select class="filter-select">
-                <option>All Services</option>
-                <option>Dog Squad Adventures</option>
-                <option>Holiday Care</option>
-                <option>Training</option>
-            </select>
-            <select class="filter-select">
-                <option>Most Recent</option>
-                <option>Highest Rated</option>
-                <option>Oldest</option>
-            </select>
-        </div>
-
         <div class="reviews-grid">
             <!-- Lou Hatter Review -->
             <div class="review-card">
@@ -931,14 +913,14 @@
 <style>
 /* Footer Styles */
 .site-footer {
-    position: relative;
-    background: linear-gradient(to bottom, var(--color-dark-ocean), #032705d1);
+     position: relative;
+    background: linear-gradient(to bottom, #3eff92, #032705d1);
     color: var(--color-light);
     padding: 6rem 0 2rem;
     overflow: hidden;
-    margin-top: 5%;
+    margin-top: -2rem;
+    z-index: 2;
 }
-
 .footer-background {
     position: absolute;
     inset: 0;
@@ -958,11 +940,11 @@
 }
 
 .footer-container {
+   position: relative;
+    z-index: 3;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
-    position: relative;
-    z-index: 2;
 }
 
 /* Footer Brand Section */
@@ -1443,11 +1425,6 @@
         font-size: 3rem;
     }
 
-    /* Reviews Section */
-    .reviews-container {
-        padding: 2rem 1rem;
-    }
-
     .filter-section {
         flex-direction: column;
         gap: 1rem;
@@ -1461,10 +1438,13 @@
     }
 
     .reviews-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
+      display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+}
     .review-card {
         margin-bottom: 1rem;
     }
@@ -1488,6 +1468,7 @@
 
     .reviewer-name {
         font-size: 1.1rem;
+        
     }
 
     .review-text {
@@ -1727,4 +1708,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 </script>
 </body>
 </html>
-
