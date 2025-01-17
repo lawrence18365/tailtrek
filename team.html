@@ -549,9 +549,8 @@
     </section>
 
     
-    <section id="contact" class="contact-section">
+<section id="contact" class="contact-section">
     <div class="contact-container">
-
         <!-- Header -->
         <div class="contact-header">
             <div class="section-badge">
@@ -570,7 +569,6 @@
 
         <!-- Content -->
         <div class="contact-content">
-            <!-- Form -->
             <form id="contactForm" class="contact-form">
                 <!-- Owner Information -->
                 <div class="form-section">
@@ -583,20 +581,36 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="email" id="email" name="email" required>
-                            <label for="email">Email Address</label>
+                            <input type="text" id="contactTime" name="contactTime" required>
+                            <label for="contactTime">Best Day/Time for Meet & Greet</label>
+                            <div class="form-highlight"></div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <input type="text" id="fullAddress" name="fullAddress" required>
+                            <label for="fullAddress">Full Address</label>
                             <div class="form-highlight"></div>
                         </div>
 
                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" required>
-                            <label for="phone">Phone Number</label>
+                            <select id="desexed" name="desexed" required>
+                                <option value="" disabled selected></option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                            <label for="desexed">Is your pet desexed?</label>
                             <div class="form-highlight"></div>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" id="suburb" name="suburb" required>
-                            <label for="suburb">Suburb</label>
+                            <input type="date" id="lastTreatment" name="lastTreatment" required>
+                            <label for="lastTreatment">Last Worm/Flea/Tick Treatment</label>
+                            <div class="form-highlight"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="date" id="nextVaccination" name="nextVaccination" required>
+                            <label for="nextVaccination">Next Vaccination Due Date</label>
                             <div class="form-highlight"></div>
                         </div>
                     </div>
@@ -613,65 +627,134 @@
                         </div>
 
                         <div class="form-group">
-                            <select id="breed" name="breed" required>
-                                <option value="" disabled selected></option>
-                                <option value="labrador">Labrador Retriever</option>
-                                <option value="german-shepherd">German Shepherd</option>
-                                <option value="golden-retriever">Golden Retriever</option>
-                                <option value="bulldog">Bulldog</option>
-                                <option value="poodle">Poodle</option>
-                                <option value="other">Other</option>
-                            </select>
-                            <label for="breed">Breed</label>
+                            <input type="text" id="adoptionTime" name="adoptionTime">
+                            <label for="adoptionTime">If adopted, how long ago?</label>
                             <div class="form-highlight"></div>
                         </div>
 
                         <div class="form-group">
-                            <select id="gender" name="gender" required>
+                            <select id="foodAggression" name="foodAggression" required>
                                 <option value="" disabled selected></option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
                             </select>
-                            <label for="gender">Gender</label>
-                            <div class="form-highlight"></div>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="number" id="age" name="age" min="0" max="20" required>
-                            <label for="age">Age (Years)</label>
+                            <label for="foodAggression">History of food aggression?</label>
                             <div class="form-highlight"></div>
                         </div>
 
                         <div class="form-group full-width">
-                            <textarea id="medicalConditions" name="medicalConditions" rows="3"></textarea>
-                            <label for="medicalConditions">Medical Conditions or Allergies (if any)</label>
+                            <textarea id="foodAggressionDetails" name="foodAggressionDetails" rows="2"></textarea>
+                            <label for="foodAggressionDetails">If yes, provide details</label>
+                            <div class="form-highlight"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <select id="dogAggression" name="dogAggression" required>
+                                <option value="" disabled selected></option>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                            <label for="dogAggression">History of dog/people aggression?</label>
+                            <div class="form-highlight"></div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <textarea id="aggressionDetails" name="aggressionDetails" rows="2"></textarea>
+                            <label for="aggressionDetails">If yes, provide details</label>
+                            <div class="form-highlight"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <select id="attackHistory" name="attackHistory" required>
+                                <option value="" disabled selected></option>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                            <label for="attackHistory">Ever involved in an attack?</label>
+                            <div class="form-highlight"></div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <textarea id="attackDetails" name="attackDetails" rows="2"></textarea>
+                            <label for="attackDetails">If yes, describe the nature of attack</label>
+                            <div class="form-highlight"></div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <textarea id="favoriteActivities" name="favoriteActivities" rows="2" required></textarea>
+                            <label for="favoriteActivities">What are their favorite things to do?</label>
                             <div class="form-highlight"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Service Selection -->
+                <!-- Motivation -->
                 <div class="form-section">
-                    <h3 class="form-section-title">Service Selection</h3>
+                    <h3 class="form-section-title">What motivates them most?</h3>
                     <div class="checkbox-grid">
                         <div class="checkbox-group">
-                            <input type="checkbox" id="packWalks" name="services[]" value="pack-walks">
-                            <label for="packWalks">Pack Adventures</label>
+                            <input type="checkbox" id="foodMotivated" name="motivation[]" value="food">
+                            <label for="foodMotivated">Food motivated</label>
                         </div>
 
                         <div class="checkbox-group">
-                            <input type="checkbox" id="soloWalks" name="services[]" value="solo-walks">
-                            <label for="soloWalks">Solo Expeditions</label>
+                            <input type="checkbox" id="toyMotivated" name="motivation[]" value="toy">
+                            <label for="toyMotivated">Ball or toy motivated</label>
                         </div>
 
                         <div class="checkbox-group">
-                            <input type="checkbox" id="training" name="services[]" value="training">
-                            <label for="training">Training Program</label>
+                            <input type="checkbox" id="praiseMotivated" name="motivation[]" value="praise">
+                            <label for="praiseMotivated">Praise motivated</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recall Rating -->
+                <div class="form-section">
+                    <h3 class="form-section-title">Recall Rating</h3>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <select id="recall" name="recall" required>
+                                <option value="" disabled selected></option>
+                                <option value="no-offleash">Cannot be let off-leash or have not tried</option>
+                                <option value="poor">Pretty poor (will bolt for road or nearest dog)</option>
+                                <option value="working">Mostly good, we are working on it</option>
+                                <option value="third">Comes back by the third recall</option>
+                                <option value="second">Comes back by the second recall</option>
+                                <option value="perfect">Comes back every time</option>
+                            </select>
+                            <label for="recall">Current recall rating</label>
+                            <div class="form-highlight"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Home Environment -->
+                <div class="form-section">
+                    <h3 class="form-section-title">Home Environment</h3>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <textarea id="household" name="household" rows="2" required></textarea>
+                            <label for="household">How many people and other pets live in your home?</label>
+                            <div class="form-highlight"></div>
                         </div>
 
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="puppy" name="services[]" value="puppy">
-                            <label for="puppy">Puppy Playdates</label>
+                        <div class="form-group full-width">
+                            <textarea id="recentChanges" name="recentChanges" rows="2"></textarea>
+                            <label for="recentChanges">Any major changes in the last year? (moving, new baby/pet, loss, renovations)</label>
+                            <div class="form-highlight"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fears and Phobias -->
+                <div class="form-section">
+                    <h3 class="form-section-title">Fears and Phobias</h3>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <textarea id="fears" name="fears" rows="3"></textarea>
+                            <label for="fears">Any specific fears? (other breeds, storms, water, trucks, etc)</label>
+                            <div class="form-highlight"></div>
                         </div>
                     </div>
                 </div>
@@ -681,21 +764,112 @@
                     <div class="agreement-check">
                         <input type="checkbox" id="termsAgree" name="termsAgree" required>
                         <label for="termsAgree">
-                            I have read and agree to the <a href="#" class="terms-link">Terms & Conditions</a>
+                            I confirm all information provided is accurate
                         </label>
                     </div>
                 </div>
 
-                <button type="submit" class="cta-button primary-cta">
-                    Submit Application
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-                    </svg>
-                </button>
+                <button type="submit" class="dogform-submit-btn dogform-submit-primary">
+    Submit Application
+    <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+    </svg>
+</button>
+
             </form>
         </div>
     </div>
-</section>
+</section><style>
+/* Submit Button Styles */
+.dogform-submit-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 16px 32px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.dogform-submit-btn svg {
+    width: 24px;
+    height: 24px;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effects */
+.dogform-submit-btn:hover {
+    background: linear-gradient(135deg, #4338ca, #6d28d9);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2),
+                0 4px 6px -2px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.dogform-submit-btn:hover svg {
+    transform: translateX(4px);
+}
+
+/* Active State */
+.dogform-submit-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1),
+                0 1px 2px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Focus State */
+.dogform-submit-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3),
+                0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading State Animation */
+.dogform-submit-btn.dogform-submit-loading {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    cursor: wait;
+    opacity: 0.8;
+}
+
+.dogform-submit-btn.dogform-submit-loading svg {
+    animation: dogform-submit-bounce 1s infinite;
+}
+
+@keyframes dogform-submit-bounce {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(8px);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+    .dogform-submit-btn {
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+    
+    .dogform-submit-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+</style>
 <style>/* Contact Section Core Styles */
 :root {
     --form-bg: rgba(20, 24, 48, 0.95);
